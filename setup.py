@@ -14,6 +14,6 @@ setup(
     install_requires=["torch", "MinkowskiEngine"],
     author="Christopher Choy",
     url="https://github.com/SergioRAgostinho/fcgf",
-    py_modules=["fcgf"],
+    packages=["fcgf"],
     python_requires=">=3.6",
 )
