@@ -138,7 +138,7 @@ class ResUNet2(ME.MinkowskiNetwork):
         has_bias=True,
         dimension=D)
 
-  def forward(self, x):
+  def forward(self, x, coords=None):
     out_s1 = self.conv1(x)
     out_s1 = self.norm1(out_s1)
     out_s1 = self.block1(out_s1)
@@ -181,7 +181,7 @@ class ResUNet2(ME.MinkowskiNetwork):
     out = ME.cat(out_s1_tr, out_s1)
     out = self.conv1_tr(out)
     out = MEF.relu(out)
-    out = self.final(out)
+    out = self.final(out, coords=coords)
 
     if self.normalize_feature:
       return ME.SparseTensor(
